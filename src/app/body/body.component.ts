@@ -26,6 +26,12 @@ export class BodyComponent implements OnInit {
       'name': new FormControl(null, Validators.required),
       'amount': new FormControl(null, [Validators.required, this.validateAmount])
     });
+    if(sessionStorage.getItem("data")) {
+      let localdata: any[] = JSON.parse(sessionStorage.getItem("data"));
+      for(let i=0;i<localdata.length;i++){
+        this.data[this.lenData++]=new EachPerson(localdata[i].name,localdata[i].amount);
+      }
+    }
     //this.data[this.lenData++]=new EachPerson("akash",1000);
     //this.data[this.lenData++]=new EachPerson("santosh",100);
     //this.data[this.lenData++]=new EachPerson("lochana",500);
@@ -56,11 +62,14 @@ export class BodyComponent implements OnInit {
         );
         this.lenData++;
       }
+      sessionStorage.setItem("data",JSON.stringify(this.data));
+      this.inputDataForm.reset();
     }
   }
   onDelete(name: string) {
     this.data.splice(this.data.findIndex(d => d.name === name),1);
     this.lenData--;
+    sessionStorage.setItem("data",JSON.stringify(this.data));
   }
   onGetReport() {
     this.loading = true;
