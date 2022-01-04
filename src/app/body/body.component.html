@@ -1,0 +1,158 @@
+<div class="container" *ngIf="lenData > 0">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of data">
+        <td>{{ d.name }}</td>
+        <td>{{ d.amount }}</td>
+        <td>
+          <img 
+            src="../../assets/trash.svg" 
+            id="delete" 
+            width="25" 
+            height="25"
+            (click)="onDelete(d.name)"
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container">
+  <form [formGroup]="inputDataForm" (ngSubmit)="onInputSubmit()">
+    <div class="mb-3 mt-3">
+      <input 
+        type="text" 
+        id="name" 
+        class="form-control"
+        placeholder="Name"
+        formControlName="name"
+      >
+      <span
+        class="alert alert-warning"
+        *ngIf="!inputDataForm.get('name').valid 
+              && inputDataForm.get('name').touched"
+      >Please enter name</span>
+    </div>
+    <div class="mb-3 mt-3">
+      <input 
+        type="text" 
+        id="amount" 
+        class="form-control"
+        placeholder="Amount"
+        formControlName="amount"
+      >
+      <span
+        class="alert alert-warning"
+        *ngIf="inputDataForm.get('amount').touched
+              && inputDataForm.controls.amount.errors?.amountInvalid"
+      >
+        Please enter valid amount
+      </span>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+    >
+      <img 
+        src="../../assets/person-plus-fill.svg"  
+        width="25" 
+        height="25"
+      >&nbsp;
+      Add
+    </button>
+  </form>
+</div>
+<hr>
+<div class="container">
+  <button class="btn btn-success" (click)="onGetReport()">Get Report</button>
+</div>
+<div *ngIf="loading">
+  <div class="spinner-border text-dark"></div>
+</div>
+<div *ngIf="report.length > 0">
+  <form [formGroup]="reportWRToForm">
+    <div class="card">
+      <div class="card-header">
+        <label><h1 class="report-title">Report w.r.to&nbsp;</h1></label>
+        <select formControlName="reportWRTo">
+          <option 
+            [ngValue]="r.name" 
+            *ngFor="let r of report" 
+          >{{ r.name }}</option>
+        </select>
+      </div>
+      <div class="card-body">
+        <div *ngFor="let r of report">
+          <div *ngIf="r.name === reportWRToForm.value.reportWRTo">
+            <div class="report-incoming" *ngIf="r.neg.length > 0" >
+              <h2 
+                class="report-sub-title"
+                title="Incoming"
+              >
+                Pending balance to {{r.name}}
+                <img 
+                  src="../../assets/arrow-left-circle-fill.svg"  
+                  width="25" 
+                  height="25"
+                >
+              </h2>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let neg of r.neg">
+                    <td>{{neg.name}}</td>
+                    <td>{{neg.amount}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="report-outgoing" *ngIf="r.pos.length > 0">
+              <h2
+                class="report-sub-title"
+                title="outgoing"
+              >
+                Pending balance for {{r.name}}
+                <img 
+                  src="../../assets/arrow-right-circle-fill.svg"  
+                  width="25" 
+                  height="25"
+                >
+              </h2>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pos of r.pos">
+                    <td>{{pos.name}}</td>
+                    <td>{{pos.amount}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <h1>Total amount: {{total_amount}}</h1>
+        <h1>After settlement amount per head: {{amount_per_head}}</h1>
+      </div>
+    </div>
+  </form>
+</div>

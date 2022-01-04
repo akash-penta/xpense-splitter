@@ -1,0 +1,97 @@
+th {
+    font-size: 2.0rem;
+}
+
+td {
+    font-size: 2.0rem;
+    word-break: break-all;
+    border-bottom: 0rem;
+}
+
+#delete {
+    cursor: pointer;
+}
+
+input {
+    border-radius: 5px;
+    font-size: 1.6rem;
+}
+
+.alert {
+    padding: 0.8rem;
+}
+
+button {
+    font-size: 1.6rem;
+    border-radius: 5px;
+}
+
+.report-title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.card {
+    margin: 1.6rem;
+}
+
+.card-header {
+    background-color: #e6e6e6;
+}
+
+select {
+    font-size: 3rem;
+    font-weight: 700;
+    border-radius: 5px;
+    border-color: #9c9c9c;
+    background-color: #e6e6e6;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+.report-incoming {
+    background: rgba(25, 135, 84, 0.5);
+    padding: 1rem;
+}
+
+.report-outgoing {
+    background: rgba(220, 53, 69, 0.5);
+    padding: 1rem;
+}
+
+.report-sub-title {
+    font-style: italic;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.spinner-border {
+    margin: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    th {
+        font-size: 1.6rem;
+    }
+    td {
+        font-size: 1.6rem;
+    }
+    input {
+        font-size: 1.4rem;
+    }
+    .report-title {
+        font-size: 2.0rem;
+    }
+    .card {
+        margin: 1.6rem 0rem;
+    }
+    select {
+        font-size: 2rem;
+    }
+    option {
+        font-size: 2rem;
+    }
+}

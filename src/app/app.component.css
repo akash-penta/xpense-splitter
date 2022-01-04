@@ -1,0 +1,8 @@
+* {
+    font-family: "Times New Roman", Times, serif;
+}
+.content-container {
+    margin: 0 auto;
+    padding: 0 1.6rem;
+    max-width: 70rem; 
+}

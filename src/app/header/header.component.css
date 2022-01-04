@@ -1,0 +1,28 @@
+.header {
+    text-align:center;
+    background-color: #e6e6e6;
+    border-bottom: 1rem #dfdfdf;
+}
+
+.title {
+    font-size: 4.6rem;
+    font-weight: 700;
+}
+
+.sub-title {
+    font-size: 2.3rem;
+    font-weight: 300;
+    font-style: italic;
+    padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .title {
+        font-size: 3.2rem;
+    }
+    .sub-title {
+        font-size: 2.0rem;
+        font-weight: 300;
+    }
+}
