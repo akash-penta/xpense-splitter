@@ -34,7 +34,16 @@
         class="form-control"
         placeholder="Name"
         formControlName="name"
+        autocomplete="off"
+        list="suggestions-name"
       >
+      <div *ngIf="lenData > 0">
+        <datalist id="suggestions-name">
+          <div *ngFor="let d of data">
+            <option>{{d.getName()}}</option>
+          </div>
+        </datalist>
+      </div>
       <span
         class="alert alert-warning"
         *ngIf="!inputDataForm.get('name').valid 
@@ -48,6 +57,7 @@
         class="form-control"
         placeholder="Amount"
         formControlName="amount"
+        autocomplete="off"
       >
       <span
         class="alert alert-warning"
