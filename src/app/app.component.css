@@ -6,3 +6,19 @@
     padding: 0 1.6rem;
     max-width: 70rem; 
 }
+
+.footer {
+    text-align: right;
+    margin-right: 2rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 550;
+    font-style: italic;
+}

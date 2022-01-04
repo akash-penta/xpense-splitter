@@ -26,9 +26,9 @@ export class BodyComponent implements OnInit {
       'name': new FormControl(null, Validators.required),
       'amount': new FormControl(null, [Validators.required, this.validateAmount])
     });
-    this.data[this.lenData++]=new EachPerson("akash",1000);
-    this.data[this.lenData++]=new EachPerson("santosh",100);
-    this.data[this.lenData++]=new EachPerson("lochana",500);
+    //this.data[this.lenData++]=new EachPerson("akash",1000);
+    //this.data[this.lenData++]=new EachPerson("santosh",100);
+    //this.data[this.lenData++]=new EachPerson("lochana",500);
     //this.onGetReport()
   }
   validateAmount(control: FormControl) {
